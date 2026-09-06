@@ -7,6 +7,10 @@
   <title>Rejishanth — Software Engineer & Full-Stack Developer</title>
   <meta name="description"
     content="Cinematic Portfolio of Rejishanth, Software Engineering undergraduate at NSBM Green University.">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Rejishanth — Software Engineer & Full-Stack Developer">
+  <meta property="og:description" content="Cinematic Portfolio of Rejishanth, Software Engineering undergraduate at NSBM Green University.">
+  <meta property="og:type" content="website">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1537,16 +1541,16 @@
 
           <form class="glass-card" id="contactForm">
             <div class="form-group">
-              <input type="text" id="formName" class="form-input" placeholder="Your Name" required>
+              <input type="text" id="formName" class="form-input" placeholder="Your Name" aria-label="Your Name" required>
             </div>
             <div class="form-group">
-              <input type="email" id="formEmail" class="form-input" placeholder="Your Email" required>
+              <input type="email" id="formEmail" class="form-input" placeholder="Your Email" aria-label="Your Email" required>
             </div>
             <div class="form-group">
-              <input type="text" id="formSubject" class="form-input" placeholder="Subject (Optional)">
+              <input type="text" id="formSubject" class="form-input" placeholder="Subject (Optional)" aria-label="Subject">
             </div>
             <div class="form-group">
-              <textarea id="formMessage" class="form-input" placeholder="Your Message" required></textarea>
+              <textarea id="formMessage" class="form-input" placeholder="Your Message" aria-label="Your Message" required></textarea>
             </div>
             <div id="formAlert"
               style="display: none; margin-bottom: 16px; font-size: 13px; font-family: var(--font-mono); padding: 10px; border-radius: 8px;">
@@ -1659,7 +1663,7 @@
         formAlert.style.display = 'none';
 
         try {
-          const response = await fetch('http://localhost:5000/api/contact', {
+          const response = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, subject, message })
