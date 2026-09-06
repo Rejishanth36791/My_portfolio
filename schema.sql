@@ -3,9 +3,9 @@
 -- Execute this SQL script in MySQL Workbench, phpMyAdmin, or MySQL CLI
 -- ============================================================
 
--- 1. Create Database
-CREATE DATABASE IF NOT EXISTS portfolio_db;
-USE portfolio_db;
+-- 1. Use Default Database (or Create if not existing)
+CREATE DATABASE IF NOT EXISTS defaultdb;
+USE defaultdb;
 
 -- 2. Create Contact Messages Table
 CREATE TABLE IF NOT EXISTS contact_messages (

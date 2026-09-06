@@ -1687,7 +1687,10 @@
           formAlert.style.background = 'rgba(239, 68, 68, 0.15)';
           formAlert.style.color = '#ef4444';
           formAlert.style.border = '1px solid #ef4444';
-          formAlert.innerHTML = '✕ ' + (err.message || 'Unable to connect to backend server. Make sure node server.js is running.');
+          const errMsg = (err.message === 'Failed to fetch')
+            ? 'Unable to connect to server. If testing locally, please open http://localhost:5000 in your browser.'
+            : (err.message || 'Failed to send message.');
+          formAlert.innerHTML = '✕ ' + errMsg;
         } finally {
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'SEND MESSAGE <i class="fa-regular fa-paper-plane"></i>';
