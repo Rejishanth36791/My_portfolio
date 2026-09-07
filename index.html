@@ -165,6 +165,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px 32px;
+      position: relative;
     }
 
     .brand-logo {
@@ -314,11 +315,12 @@
       flex-wrap: wrap;
       gap: 12px;
       font-family: var(--font-display);
-      font-size: clamp(48px, 6vw, 84px);
+      font-size: clamp(36px, 6vw, 84px);
       font-weight: 900;
       letter-spacing: 0.15em;
       color: var(--text-title);
-      line-height: 1;
+      line-height: 1.1;
+      word-break: break-word;
     }
 
     .title-logo-box {
@@ -952,6 +954,11 @@
       margin-bottom: 24px;
     }
 
+    .contact-item span {
+      word-break: break-all;
+      overflow-wrap: anywhere;
+    }
+
     .contact-icon {
       width: 44px;
       height: 44px;
@@ -1085,6 +1092,20 @@
     }
 
     /* ---------- RESPONSIVE DESIGN ---------- */
+    /* Mobile Toggle Button (hidden on desktop) */
+    .mobile-toggle-btn {
+      display: none;
+    }
+
+    /* Laptop & Small Desktop (769px - 1200px) */
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+    }
+
+    /* Tablet & Medium Screens (<= 1024px) */
     @media (max-width: 1024px) {
       .hero-stage {
         grid-template-columns: 1fr;
@@ -1120,8 +1141,10 @@
       }
 
       .portrait-stage {
-        max-width: 360px;
-        height: 440px;
+        width: 100%;
+        max-width: min(340px, 100%);
+        height: auto;
+        aspect-ratio: 4 / 5;
         margin: 0 auto;
       }
 
@@ -1132,7 +1155,313 @@
         grid-template-columns: 1fr;
       }
 
+      /* Mobile Navigation Menu Drawer */
+      .mobile-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid var(--border-line);
+        background: var(--bg-card);
+        color: var(--text-muted);
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-toggle-btn:hover {
+        color: var(--accent-cyan);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 12px var(--accent-glow);
+      }
+
       .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-nav);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-line);
+        padding: 20px 24px;
+        gap: 16px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        z-index: 99;
+      }
+
+      .nav-menu.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .character-taglines {
+        display: inline-block;
+        text-align: left;
+        margin: 0 auto 30px;
+        max-width: 100%;
+      }
+    }
+
+    /* Tablet Portrait (<= 768px) */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .cinematic-frame {
+        margin: 12px auto;
+        border-radius: var(--radius-md);
+      }
+
+      .nav-container {
+        padding: 14px 20px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: clamp(24px, 5vw, 36px);
+      }
+
+      .section-desc {
+        margin-bottom: 32px;
+        font-size: 15px;
+      }
+
+      .glass-card {
+        padding: 24px;
+      }
+    }
+
+    /* Mobile Phones (<= 576px) */
+    @media (max-width: 576px) {
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 14px;
+      }
+
+      .watch-trailer-btn,
+      .secondary-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .stat-box-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .stat-box {
+        padding: 12px 6px;
+      }
+
+      .stat-val {
+        font-size: 22px;
+      }
+
+      .stat-lbl {
+        font-size: 9px;
+        letter-spacing: 0.02em;
+      }
+
+      .timeline {
+        padding-left: 20px;
+      }
+
+      .timeline-dot {
+        left: -29px;
+        width: 14px;
+        height: 14px;
+        top: 5px;
+      }
+
+      .modal-backdrop {
+        padding: 16px;
+      }
+
+      .modal-box {
+        padding: 24px 16px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-video-placeholder {
+        height: 200px;
+      }
+    }
+
+    /* Small Mobile Phones (320px - 480px) */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      .cinematic-frame {
+        margin: 8px auto;
+      }
+
+      .nav-container {
+        padding: 12px 14px;
+      }
+
+      .brand-logo {
+        font-size: 16px;
+        gap: 8px;
+      }
+
+      .brand-logo span {
+        font-size: 14px;
+        letter-spacing: 0.06em;
+      }
+
+      .logo-box {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+      }
+
+      .nav-socials {
+        gap: 8px;
+      }
+
+      .social-icon,
+      .theme-btn,
+      .mobile-toggle-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+      }
+
+      .hero-title-main {
+        font-size: clamp(24px, 7.5vw, 38px);
+        letter-spacing: 0.04em;
+        gap: 8px;
+      }
+
+      .hero-title-sub {
+        font-size: 16px;
+      }
+
+      .title-logo-box {
+        border-width: 3px;
+      }
+
+      .hero-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.15em;
+      }
+
+      .portrait-stage {
+        max-width: min(280px, 100%);
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .section-desc {
+        font-size: 13.5px;
+        margin-bottom: 24px;
+      }
+
+      .glass-card {
+        padding: 18px 14px;
+      }
+
+      .skills-grid,
+      .certs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .skill-chip {
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+
+      .project-banner {
+        height: 140px;
+        padding: 14px;
+      }
+
+      .project-content {
+        padding: 16px 12px;
+        gap: 10px;
+      }
+
+      .project-content h3 {
+        font-size: 18px;
+      }
+
+      .edu-card {
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .edu-icon-box {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+      }
+
+      .form-input {
+        padding: 12px 14px;
+        font-size: 13.5px;
+      }
+
+      .fixed-home-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+      }
+    }
+
+    /* Extra Small Mobile (320px - 360px) */
+    @media (max-width: 360px) {
+      .stat-box-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .stat-box {
+        padding: 14px;
+      }
+
+      .stat-val {
+        font-size: 26px;
+      }
+
+      .stat-lbl {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-title-main {
+        font-size: 22px;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-logo span {
         display: none;
       }
     }
@@ -1201,6 +1530,7 @@
           <a href="mailto:rejishanth422@example.com" class="social-icon" aria-label="Email"><i
               class="fa-regular fa-envelope"></i></a>
           <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+          <button class="mobile-toggle-btn" id="navToggle" aria-label="Toggle Navigation Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
         </div>
       </div>
     </header>
@@ -1608,6 +1938,36 @@
   </div>
 
   <script>
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+        const isOpen = navMenu.classList.contains('active');
+        navToggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
     // Theme Toggle
     const themeBtn = document.getElementById('themeToggle');
     const root = document.documentElement;
